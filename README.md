@@ -1,0 +1,1 @@
+# hibernate-dirty-checking
