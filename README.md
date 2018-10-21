@@ -28,18 +28,8 @@ time, Hibernate asks your entity what has changed rather than having to
 perform the state-diff calculations.
 
 # immutability
-Immutability can be specified for both entities and collections.
+Important aspect of dirty-checking is its connection with `@Immutable`
+entities. In short: immutable entities are not tracked by this mechanism.
 
-If a specific entity is immutable, it is good practice to mark it with the 
-`@Immutable` annotation, because Internally, Hibernate is going to perform 
-several optimizations, such as:
-* reducing memory footprint since there is no need to retain the 
-dehydrated state for the dirty checking mechanism,
-* speeding-up the Persistence Context flushing phase since immutable 
-entities can skip the dirty checking process.
-
-When loading the entity and trying to change its state, Hibernate will 
-skip any modification, therefore no `SQL UPDATE` statement is executed.
-
-**While immutable entity changes are simply discarded, modifying an 
-immutable collection end up in a HibernateException being thrown.**
+To get more information please refer my other project
+https://github.com/mtumilowicz/hibernate-immutable
