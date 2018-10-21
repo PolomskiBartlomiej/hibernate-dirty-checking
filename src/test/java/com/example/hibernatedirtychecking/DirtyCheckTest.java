@@ -72,4 +72,25 @@ public class DirtyCheckTest {
 //        Hibernate: update customer set name=? where id=?
 //        field_change end
     }
+    
+    @Test
+    public void change_in_collection() {
+        System.out.println("change_in_collection start");
+        Customer customer = repository.findById(1).orElseThrow(EntityNotFoundException::new);
+        customer.getIssues().add(Issue.builder()
+                .id(2)
+                .description("issue2")
+                .build());
+
+        repository.save(customer);
+        System.out.println("change_in_collection end");
+
+//        change_in_collection start
+//        Hibernate: select customer0_.id as id1_0_0_, customer0_.name as name2_0_0_, issues1_.issues_id as issues_i3_1_1_, issues1_.id as id1_1_1_, issues1_.id as id1_1_2_, issues1_.description as descript2_1_2_ from customer customer0_ left outer join issue issues1_ on customer0_.id=issues1_.issues_id where customer0_.id=?
+//        Hibernate: select customer0_.id as id1_0_1_, customer0_.name as name2_0_1_, issues1_.issues_id as issues_i3_1_3_, issues1_.id as id1_1_3_, issues1_.id as id1_1_0_, issues1_.description as descript2_1_0_ from customer customer0_ left outer join issue issues1_ on customer0_.id=issues1_.issues_id where customer0_.id=?
+//        Hibernate: select issue0_.id as id1_1_0_, issue0_.description as descript2_1_0_ from issue issue0_ where issue0_.id=?
+//        Hibernate: insert into issue (description, id) values (?, ?)
+//        Hibernate: update issue set issues_id=? where id=?
+//        change_in_collection end
+    }
 }

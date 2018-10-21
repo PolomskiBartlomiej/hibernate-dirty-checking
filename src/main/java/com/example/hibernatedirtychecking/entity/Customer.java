@@ -19,7 +19,7 @@ public class Customer {
 
     String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
     Collection<Issue> issues;
 }
