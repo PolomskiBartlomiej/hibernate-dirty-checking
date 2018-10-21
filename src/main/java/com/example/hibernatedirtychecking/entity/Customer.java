@@ -3,10 +3,7 @@ package com.example.hibernatedirtychecking.entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -22,7 +19,7 @@ public class Customer {
 
     String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
     Collection<Issue> issues;
 }
