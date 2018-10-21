@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/hibernate-dirty-checking.svg?token=PwyvjePQ7aiAX51hSYLE&branch=master)](https://travis-ci.com/mtumilowicz/hibernate-dirty-checking)
+
 # hibernate-dirty-checking
+Hibernate dirty-checking mechanism description.
 
 _Reference_: http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html  
 _Reference_: https://vladmihalcea.com/the-anatomy-of-hibernate-dirty-checking/  
